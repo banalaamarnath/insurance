@@ -1,0 +1,88 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<html>
+<style>
+    ::placeholder {
+        color: white;
+    }
+</style>
+
+<body>
+    <!-- Modal -->
+    <div class="modal" tabindex="-1"
+        style="text-align: center; display: block;background-image:url('/images/50-Beautiful-and-Minimalist-Presentation-Backgrounds-036.jpg');">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" style="background-color:rgba(0,0,0,.075);border: 0px;">
+                <div class="modal-header" style="border-bottom: 0px;">
+                    <h5 class="modal-title" id="exampleModalLongTitle" style="margin-left: 25%; color: white;">Login
+                        into your account</h5>
+                </div>
+                <div class="modal-body">
+                    <input type="text" id="username" placeholder="Username"
+                        style="color: white; margin-left:-55px ; border-top-style: hidden;border-right-style: hidden;border-left-style: hidden;border-bottom-style: hidden;background-color: rgba(0,0,0,.0);outline: none;">
+                    <hr style="border-top: 1px solid #f8f9fa;width: 250px;margin-left: 25%;margin-top:4.96px">
+                </div>
+                <div class="modal-body">
+                    <input type="text" id="password" placeholder="Password"
+                        style="color: white;margin-left:-55px; border-top-style: hidden;border-right-style: hidden;border-left-style: hidden;border-bottom-style: hidden;background-color: rgba(0,0,0,.0);outline: none;">
+                    <hr style="border-top: 1px solid #f8f9fa;width: 250px;margin-left: 25%;margin-top:4.96px">
+                </div>
+                <div class="modal-footer" style="border-top: 0px;display:inline-block;margin-left: 15px;">
+                    <button type="button" class="btn btn-primary"
+                        style="background-color: #17a2b8;border-color: rgb(0 0 0 / 0%);width: 250px;"
+                        onclick="login()">Login</button>
+                </div>
+                <div>
+                    <label style="margin-left: 15px;">Don't have account <a href="/html/signup.html"
+                            style="color: white;">signup</a> here</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+<script>
+
+    function login() {
+        var username = $('#username').val();
+        var password = $('#password').val();
+        if (!username || !password) {
+            alert(username);
+            alert("All are manitory fields");
+            return;
+        }
+        else {
+            $.ajax({
+                url: "/login",
+                method: "POST",
+                dataType: "json",
+                data: { username, password },
+                success: function (data) {
+                    //console.log("data:",data);
+                    alert(data.message);
+                    if (data.token) {
+                        console.log(data.token);
+                        SetTokenInCookie(data.token)
+                        window.location = "/html/landingPage.html"
+                        //Response.redirect("/html/AddCustomer.html")
+                    }
+                },
+                error: function (error) {
+                    console.log(error.responseJSON.message);
+                    alert(error.responseJSON.message + "status code:" + error.status)
+                }
+            })
+        }
+    }
+    function SetTokenInCookie(token) {
+        $.removeCookie("token");
+        console.log($.cookie("token"));
+        $.cookie("token", token, { path: '/' });
+        console.log("CookieToken:" + $.cookie("token"));
+
+    }
+</script>
+
+</html>

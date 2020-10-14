@@ -1,0 +1,101 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<html>
+<style>
+  ::placeholder {
+    color: white;
+  }
+</style>
+
+<body>
+  <!-- Modal -->
+  <div class="modal" tabindex="-1"
+    style="text-align: center; display: block;background-image:url('/images/50-Beautiful-and-Minimalist-Presentation-Backgrounds-036.jpg');">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content" style="background-color:rgba(0,0,0,.075);border: 0px;">
+        <div class="modal-header" style="border-bottom: 0px;">
+          <h5 class="modal-title" id="exampleModalLongTitle" style="margin-left: 25%; color: white;">Create New Account
+          </h5>
+        </div>
+        <div class="modal-body">
+          <input type="text" id="fullname" placeholder="Fullname"
+            style="color: white; margin-left:-55px ; border-top-style: hidden;border-right-style: hidden;border-left-style: hidden;border-bottom-style: hidden;background-color: rgba(0,0,0,.0);outline: none;">
+          <hr style="border-top: 1px solid #f8f9fa;width: 250px;margin-left: 25%;margin-top:4.96px">
+        </div>
+        <div class="modal-body">
+          <input type="text" id="branch" placeholder="Branch"
+            style="color: white;margin-left:-55px; border-top-style: hidden;border-right-style: hidden;border-left-style: hidden;border-bottom-style: hidden;background-color: rgba(0,0,0,.0);outline: none;">
+          <hr style="border-top: 1px solid #f8f9fa;width: 250px;margin-left: 25%;margin-top:4.96px">
+        </div>
+        <div class="modal-body">
+          <input type="text" id="email" placeholder="Email"
+            style="color: white;margin-left:-55px; border-top-style: hidden;border-right-style: hidden;border-left-style: hidden;border-bottom-style: hidden;background-color: rgba(0,0,0,.0);outline: none;">
+          <hr style="border-top: 1px solid #f8f9fa;width: 250px;margin-left: 25%;margin-top:4.96px">
+        </div>
+        <div class="modal-body">
+          <input type="text" id="mobile" placeholder="Mobile"
+            style="color: white;margin-left:-55px; border-top-style: hidden;border-right-style: hidden;border-left-style: hidden;border-bottom-style: hidden;background-color: rgba(0,0,0,.0);outline: none;">
+          <hr style="border-top: 1px solid #f8f9fa;width: 250px;margin-left: 25%;margin-top:4.96px">
+        </div>
+        <div class="modal-body">
+          <input type="text" id="password" placeholder="Password"
+            style="color: white;margin-left:-55px; border-top-style: hidden;border-right-style: hidden;border-left-style: hidden;border-bottom-style: hidden;background-color: rgba(0,0,0,.0);outline: none;">
+          <hr style="border-top: 1px solid #f8f9fa;width: 250px;margin-left: 25%;margin-top:4.96px">
+        </div>
+        <div class="modal-footer" style="border-top: 0px;display:inline-block;margin-left: 15px;">
+          <button type="button" class="btn btn-primary"
+            style="background-color: #17a2b8;border-color: rgb(0 0 0 / 0%);width: 250px;"
+            onclick="signupValidate()">Signup</button>
+        </div>
+        <div>
+          <label style="margin-left: 15px;">Already have account <a href="login.html" style="color: white;">Login</a>
+            here</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type='text/javascript'>
+  function signupValidate() {
+    var fullname = $('#fullname').val();
+    var branch = $("#branch").val();
+    var email = $("#email").val();
+    var mobile = $("#mobile").val();
+    var password = $("#password").val();
+    if (!fullname || !branch || !email || !mobile || !password) {
+      alert("All are manditory fields");
+      return;
+    }
+    var emailRegex = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    if(!email.match(emailRegex)){
+      alert("enter valid email");
+      return;
+    }
+    var numberregex = /^[0-9]+$/;
+    if(!mobile.match(numberregex)){
+      alert("enter valid number");
+      return;
+    }
+    if(mobile.length != 10){
+      alert("Enter valid number");
+      return;
+    }
+    
+    
+  $.ajax({
+    url:"/signup",
+    method:"POST",
+    dataType:"json", 
+    data:{fullname,branch,email,mobile,password},
+    success:function(d){
+      //var result = jQuery.parseJSON();
+      console.log("re",d);
+      alert(d.message);
+    }
+    
+  })
+  }
+</script>
+
+</html>

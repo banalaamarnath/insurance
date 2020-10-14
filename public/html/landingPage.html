@@ -1,0 +1,1146 @@
+<html>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+    .sidebar {
+        margin: 0;
+        padding: 0;
+        width: 200px;
+        background-color: rgb(0 0 1 / 22%);
+        position: fixed;
+        height: 100%;
+        overflow: auto;
+        top: 0;
+    }
+
+    .sidebar a {
+        display: block;
+        color: black;
+        padding: 16px;
+        text-decoration: none;
+        font-size: x-large;
+    }
+
+    .active {
+        background-color: rgb(0 0 0 / 18%);
+        display: block;
+    }
+
+    .modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Sit on top */
+        padding-top: 0px;
+        /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgb(0 0 0 / 54%);
+        /* Black w/ opacity */
+
+    }
+
+    /* Modal Content */
+    .modal-content {
+        /*background-image:url('/images/50-Beautiful-and-Minimalist-Presentation-Backgrounds-036.jpg');*/
+        background-color: rgb(162 168 244);
+        margin: auto;
+        padding: 20px;
+        padding-top: 0px;
+        border: 1px solid #888;
+        width: 40%;
+    }
+
+    .table {
+        width: 99%;
+        margin-top: 60px;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .thead-light {
+        text-align: center;
+    }
+
+    .div {
+        padding-bottom: 20px;
+        padding-top: 25px;
+        padding-left: 100px;
+        padding-right: 100px;
+        position: relative;
+        width: 1050px;
+        height: 160px;
+    }
+
+    .content {
+        width: 400px;
+        background-color: rgb(0 0 0 / 22%);
+        ;
+        height: 115px;
+        border-radius: 20px;
+        padding: 7px;
+        position: absolute;
+        top: 25px;
+    }
+
+    .contents {
+        width: 400px;
+        background-color: rgb(0 0 0 / 22%);
+        ;
+        height: 115px;
+        border-radius: 20px;
+        padding: 7px;
+        position: absolute;
+        top: 25px;
+        left: 550px;
+
+    }
+
+    .image {
+        width: 100px;
+        height: 100px;
+        border-radius: 10px;
+    }
+
+    .tables {
+        position: absolute;
+        top: 8px;
+        ;
+        left: 180px;
+    }
+
+    .trs {
+        height: 35px;
+    }
+</style>
+
+<head></head>
+
+<body style="background-image:url('/images/50-Beautiful-and-Minimalist-Presentation-Backgrounds-036.jpg');">
+    <div class="sidebar">
+        <a style="color:white" class="active" href="#Dashboad" id="DahboadNav">Dashboad</a>
+        <a href="#Customers" id="CustomersNav">Customers</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+    </div>
+    <!-- Dashboad -->
+    <div id="Dashboad" style="margin-left: 210px;display: block;">
+        <div style="margin-left: 450px;">
+            <h1>Dashboard</h1>
+        </div>
+        <br>
+        <div id="filtersContent" style="margin-left: 100px;">
+            <table id="filters">
+                <tr>
+                    <td style="width: 100px;">
+                        <label>Due Month</label>
+                    </td>
+                    <td style="width: 160px;">
+                        <select style="width: 130px;background-color: #17a2b800;">
+                            <option>Select</option>
+                        </select>
+                    </td>
+                    <td style="width: 100px;"></td>
+                    <td style="width: 80px;">
+                        <label>Sort by</label>
+                    </td>
+                    <td style="width: 160px;">
+                        <select style="width: 130px;background-color: #17a2b800">
+                            <option>Select</option>
+                        </select>
+                    </td>
+                    <td style="width: 120px;"></td>
+                    <td>
+                        <input id="Search" type="search" placeholder="Search" style="background-color: #17a2b800">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="user">
+
+        </div>
+    </div>
+    <!-- Customers -->
+    <div id="Customers" style="margin-left:210px;display:none;overflow:auto;">
+        <table style="width: 100%;">
+            <tr>
+                <td style="text-align: right;">
+                    <label>From:</label>
+                    <input type="date" id="Fromdate">
+                </td>
+                <td>
+                    <label>To:</label>
+                    <input type="date" id="Todate">
+                </td>
+                <td>
+                    <input type="button" value="Search" id="search">
+                </td>
+            </tr>
+
+        </table>
+        <br />
+        <table style="width: 100%;">
+            <tr style="width: 100%;">
+                <td style="width: 50%;"></td>
+                <td style="width: 35%;"></td>
+                <td>
+
+                    <input type="button" class="btn btn-info btn-lg" value="Add Customer" id="AddCustomerButton">
+                </td>
+            </tr>
+        </table>
+
+        <table id class="table table-striped table-bordered table-hover">
+            <thead style="background-color: rgb(0 0 0 / 38%);color: white;">
+                <th style="text-align: center;">Name</th>
+                <th style="text-align: center;">Age</th>
+                <th style="text-align: center;">YearlyIncome</th>
+                <th style="text-align: center;">Phone</th>
+                <th style="text-align: center;">Actions</th>
+            </thead>
+            <tbody id="customerData">
+
+            </tbody>
+        </table>
+    </div>
+    <!-- add or update customers -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <h1 style="text-align: center;">DATA SHEET</h1>
+            <h2>Customer information</h2>
+            <label style="display: none;" id="CustomerId"></label>
+            <table style="all: initial;width: 500PX;">
+                <tr>
+                    <td style="width: 200px;text-align: left;height: 30px;"><label>Full Name(with sur name):</label>
+                    </td>
+                    <td style="width: 300px; height: 30px;"><input type="text" id="FullName"
+                            style="font-size: 18px; border-top-style: hidden;border-right-style: hidden;border-left-style: hidden;border-bottom-style:groove;outline: none;background-color:rgba(0,0,0,0) ;width: 300px;">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 200px;text-align: left;height: 30px;"><label>Present address:</label></td>
+                    <td style="width: 300px; height: 30px;"><input type="text" id="PresentAddress"
+                            style="border-top-style: hidden;border-right-style: hidden;border-left-style: hidden;border-bottom-style:groove;outline: none;background-color:rgba(0,0,0,0) ;width: 300px;">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 200px;text-align: left;height: 30px;"><label
+                            style="margin-left: 30px;">Pincode:</label></td>
+                    <td style="width: 300px; height: 30px;"><input type="number" id="PresentAddressPincode"
+                            style="width: 300px; border-top-style: hidden;border-right-style: hidden;border-left-style: hidden;border-bottom-style:groove;outline: none;background-color:rgba(0,0,0,0);">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 200px;text-align: left;height: 30px;"><label
+                            style="margin-left: 30px;">Phone:</label></td>
+                    <td><input type="number" id="PresentAddressPhone"
+                            style="width: 300px; border-top-style: hidden;border-right-style: hidden;border-left-style: hidden;border-bottom-style:groove;outline: none;background-color:rgba(0,0,0,0);">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 200px;text-align: left;height: 30px;"><label>Permanent address:</label></td>
+                    <td style="width: 300px; height: 30px;"><input type="text" id="PermanentAddress"
+                            style="border-top-style: hidden;border-right-style: hidden;border-left-style: hidden;border-bottom-style:groove;outline: none;background-color:rgba(0,0,0,0) ;width: 300px;">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 200px;text-align: left;height: 30px;"><label>DOB/Present Age:</label></td>
+                    <td style="width: 300px; height: 30px;">
+                        <input type="date" id="DOB"
+                            style="border-top-style: hidden;border-right-style: hidden;border-left-style: hidden;border-bottom-style:groove;outline: none;background-color:rgba(0,0,0,0) ;width: 145px;">
+                        <label>/</label><input type="number" id="PresentAge"
+                            style="border-top-style: hidden;border-right-style: hidden;border-left-style: hidden;border-bottom-style:groove;outline: none;background-color:rgba(0,0,0,0) ;width: 145px;">
+                    </td>
+                <tr>
+                    <td><label style="margin-left: 30px;">Education Qualification: </label>
+                    </td>
+                    <td style="width: 300px; height: 30px;"><input type="text" id="EducationQualification"
+                            style="border-top-style: hidden;border-right-style: hidden;border-left-style: hidden;border-bottom-style:groove;outline: none;background-color:rgba(0,0,0,0) ;width: 300px;">
+                    </td>
+                    </td>
+                </tr>
+                </tr>
+                <tr>
+                    <td style="width: 200px;text-align: left;height: 30px;"><label>Occupation:</label></td>
+                    <td style="width: 300px; height: 30px;"><input type="text" id="Occupation"
+                            style="border-top-style: hidden;border-right-style: hidden;border-left-style: hidden;border-bottom-style:groove;outline: none;background-color:rgba(0,0,0,0) ;width: 300px;">
+                    </td>
+                </tr>
+                <tr>
+                    <td><label style="margin-left: 30px;">Yearly Income: </label></td>
+                    <td style="width: 300px; height: 30px;"><input type="number" id="YearlyIncome"
+                            style="border-top-style: hidden;border-right-style: hidden;border-left-style: hidden;border-bottom-style:groove;outline: none;background-color:rgba(0,0,0,0) ;width: 300px;">
+                    </td>
+                </tr>
+
+                </tr>
+                <tr>
+                    <td style="width: 200px;text-align: left;height: 30px;"><label>Father Name:</label></td>
+                    <td style="width: 300px; height: 30px;"><input type="text" id="FatherName"
+                            style="border-top-style: hidden;border-right-style: hidden;border-left-style: hidden;border-bottom-style:groove;outline: none;background-color:rgba(0,0,0,0) ;width: 300px;">
+                    </td>
+                </tr>
+                <tr>
+                    <td><label style="margin-left: 30px;">Place Of Birth: </label></td>
+                    <td style="width: 300px; height: 30px;"><input type="text" id="PlaceOfBirth"
+                            style="border-top-style: hidden;border-right-style: hidden;border-left-style: hidden;border-bottom-style:groove;outline: none;background-color:rgba(0,0,0,0) ;width: 300px;">
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="width: 200px;text-align: left;height: 30px;"><label>Husband Name:</label></td>
+                    <td style="width: 300px; height: 30px;"><input type="text" id="HusbandName"
+                            style="border-top-style: hidden;border-right-style: hidden;border-left-style: hidden;border-bottom-style:groove;outline: none;background-color:rgba(0,0,0,0) ;width: 300px;">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 200px;text-align: left;height: 30px;"><label
+                            style="margin-left: 30px;">Age:</label></td>
+                    <td style="width: 300px; height: 30px;"><input type="number" id="HusbandAge"
+                            style="border-top-style: hidden;border-right-style: hidden;border-left-style: hidden;border-bottom-style:groove;outline: none;background-color:rgba(0,0,0,0) ;width: 300px;">
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="width: 200px;text-align: left;height: 30px;"><label>Nominee Name:</label></td>
+                    <td style="width: 300px; height: 30px;"><input type="text" id="NomineeName"
+                            style="border-top-style: hidden;border-right-style: hidden;border-left-style: hidden;border-bottom-style:groove;outline: none;background-color:rgba(0,0,0,0) ;width: 300px;">
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="width: 200px;text-align: left;height: 30px;"><label
+                            style="margin-left: 30px;">Age:</label></td>
+                    <td style="width: 300px; height: 30px;"><input type="number" id="NomineeAge"
+                            style="border-top-style: hidden;border-right-style: hidden;border-left-style: hidden;border-bottom-style:groove;outline: none;background-color:rgba(0,0,0,0) ;width: 300px;">
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="width: 200px;text-align: left;height: 30px;"><label
+                            style="margin-left: 30px;">Relation:</label></td>
+                    <td style="width: 300px; height: 30px;"><input type="text" id="NomineeRelation"
+                            style="border-top-style: hidden;border-right-style: hidden;border-left-style: hidden;border-bottom-style:groove;outline: none;background-color:rgba(0,0,0,0) ;width: 300px;">
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="width: 200px;text-align: left;height: 30px;"><label>Employee Service:</label></td>
+                    <td style="width: 300px; height: 30px;"><input type="text" id="EmployeeService"
+                            style="border-top-style: hidden;border-right-style: hidden;border-left-style: hidden;border-bottom-style:groove;outline: none;background-color:rgba(0,0,0,0) ;width: 300px;">
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="width: 200px;text-align: left;height: 30px;"><label style="margin-left: 30px;">Company
+                            Address:</label></td>
+                    <td style="width: 300px; height: 30px;"><input type="text" id="CompanyAddress"
+                            style="border-top-style: hidden;border-right-style: hidden;border-left-style: hidden;border-bottom-style:groove;outline: none;background-color:rgba(0,0,0,0) ;width: 300px;">
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="width: 200px;text-align: left;height: 30px;"><label
+                            style="margin-left: 30px;">Pincode:</label></td>
+                    <td style="width: 300px; height: 30px;"><input type="number" id="CompanyAddressPincode"
+                            style="border-top-style: hidden;border-right-style: hidden;border-left-style: hidden;border-bottom-style:groove;outline: none;background-color:rgba(0,0,0,0) ;width: 300px;">
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="width: 200px;text-align: left;height: 30px;"><label>Plans & terms:</label></td>
+                    <td style="width: 300px; height: 30px;"><input type="text" id="PlansAndTerms"
+                            style="border-top-style: hidden;border-right-style: hidden;border-left-style: hidden;border-bottom-style:groove;outline: none;background-color:rgba(0,0,0,0) ;width: 300px;">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 200px;text-align: left;height: 30px;"><label style="margin-left: 30px;">Total
+                            Bhema:</label></td>
+                    <td><input type="text" id="TotalBhema"
+                            style="width: 300px; border-top-style: hidden;border-right-style: hidden;border-left-style: hidden;border-bottom-style:groove;outline: none;background-color:rgba(0,0,0,0);">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 200px;text-align: left;height: 30px;"><label
+                            style="margin-left: 30px;">Mode:</label></td>
+                    <td style="width: 300px; height: 30px;"><select id="Mode"
+                            style="width: 300px; border-top-style: hidden;border-right-style: hidden;border-left-style: hidden;border-bottom-style:groove;outline: none;background-color:rgba(0,0,0,0);">
+                            <option value="0">Select</option>
+                            <option value="1">YLY</option>
+                            <option value="2">HYLY</option>
+                            <option value="3">QLY</option>
+                            <option value="4">SSSS</option>
+                        </select></td>
+                </tr>
+                <tr>
+                    <td style="width: 200px;text-align: left;height: 30px;"><label
+                            style="margin-left: 30px;">Premium:</label></td>
+                    <td><input type="text" id="Premium"
+                            style="width: 300px; border-top-style: hidden;border-right-style: hidden;border-left-style: hidden;border-bottom-style:groove;outline: none;background-color:rgba(0,0,0,0);">
+                    </td>
+
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <h2>Policy Infromation</h2>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Policy taken</td>
+                    <td><input type="date" id="policyTaken"
+                            style="width: 300px; border-top-style: hidden;border-right-style: hidden;border-left-style: hidden;border-bottom-style:groove;outline: none;background-color:rgba(0,0,0,0);">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Policy Expiry</td>
+                    <td><input type="date" id="policyExpiry"
+                            style="width: 300px; border-top-style: hidden;border-right-style: hidden;border-left-style: hidden;border-bottom-style:groove;outline: none;background-color:rgba(0,0,0,0);">
+                    </td>
+                </tr>
+            </table>
+
+            <br />
+            <div style="text-align: center;">
+                <button type="button" class="btn btn-primary" id="CancelAddCustomers"
+                    style="background-color: #17a2b8;border-color: rgb(0 0 0 / 0%);width: 200px;">Cancel</button>
+                <button type="button" class="btn btn-primary" id="SubmitAddCustomers"
+                    style="background-color: #17a2b8;border-color: rgb(0 0 0 / 0%);width: 200px;">Submit</button>
+            </div>
+        </div>
+
+    </div>
+    <!-- view customer -->
+    <div id="ViewmyModal" class="modal">
+        <div class="modal-content">
+            <h1 style="text-align: center;">View Customer</h1>
+            <label style="display: none;" id="label_CustomerId"></label>
+            <table style="all: initial;width: 500PX;">
+                <tr>
+                    <td style="width: 300px;text-align: left;height: 30px;"><label>Full Name(with sur name):</label>
+                    </td>
+                    <td style="width: 300px; height: 30px;">
+                        <label id="label_FullName"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 300px;text-align: left;height: 30px;"><label>Present address:</label></td>
+                    <td style="width: 300px; height: 30px;">
+                        <label id="label_PresentAddress"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 300px;text-align: left;height: 30px;"><label
+                            style="margin-left: 30px;">Pincode:</label></td>
+                    <td style="width: 300px; height: 30px;">
+                        <label id="label_PresentAddressPincode"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 300px;text-align: left;height: 30px;"><label
+                            style="margin-left: 30px;">Phone:</label></td>
+                    <td>
+                        <label id="label_PresentAddressPhone"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 300px;text-align: left;height: 30px;"><label>Permanent address:</label></td>
+                    <td style="width: 300px; height: 30px;">
+                        <label id="label_PermanentAddress"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 300px;text-align: left;height: 30px;"><label>DOB/Present Age:</label></td>
+                    <td style="width: 300px; height: 30px;">
+                        <label id="label_DOB"></label>
+                        <label>/</label>
+                        <label id="label_PresentAge"></label>
+                    </td>
+                <tr>
+                    <td><label style="margin-left: 30px;">Education Qualification: </label>
+                    </td>
+                    <td style="width: 300px; height: 30px;">
+                        <label id="label_EducationQualification"></label>
+                    </td>
+                    </td>
+                </tr>
+                </tr>
+                <tr>
+                    <td style="width: 300px;text-align: left;height: 30px;"><label>Occupation:</label></td>
+                    <td style="width: 300px; height: 30px;">
+                        <label id="label_Occupation"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label style="margin-left: 30px;">Yearly Income: </label></td>
+                    <td style="width: 300px; height: 30px;">
+                        <label id="label_YearlyIncome"></label>
+                    </td>
+                </tr>
+
+                </tr>
+                <tr>
+                    <td style="width: 300px;text-align: left;height: 30px;"><label>Father Name:</label></td>
+                    <td style="width: 300px; height: 30px;">
+                        <label id="label_FatherName"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label style="margin-left: 30px;">Place Of Birth: </label></td>
+                    <td style="width: 300px; height: 30px;">
+                        <label id="label_PlaceOfBirth"></label>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="width: 300px;text-align: left;height: 30px;"><label>Husband Name:</label></td>
+                    <td style="width: 300px; height: 30px;">
+                        <label id="label_HusbandName"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 300px;text-align: left;height: 30px;"><label
+                            style="margin-left: 30px;">Age:</label></td>
+                    <td style="width: 300px; height: 30px;">
+                        <label id="label_HusbandAge"></label>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="width: 300px;text-align: left;height: 30px;"><label>Nominee Name:</label></td>
+                    <td style="width: 300px; height: 30px;">
+                        <label id="label_NomineeName"></label>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="width: 300px;text-align: left;height: 30px;"><label
+                            style="margin-left: 30px;">Age:</label></td>
+                    <td style="width: 300px; height: 30px;">
+                        <label id="label_NomineeAge"></label>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="width: 300px;text-align: left;height: 30px;"><label
+                            style="margin-left: 30px;">Relation:</label></td>
+                    <td style="width: 300px; height: 30px;">
+                        <label id="label_NomineeRelation"></label>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="width: 300px;text-align: left;height: 30px;"><label>Employee Service:</label></td>
+                    <td style="width: 300px; height: 30px;">
+                        <label id="label_EmployeeService"></label>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="width: 300px;text-align: left;height: 30px;"><label style="margin-left: 30px;">Company
+                            Address:</label></td>
+                    <td style="width: 300px; height: 30px;">
+                        <label id="label_CompanyAddress"></label>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="width: 300px;text-align: left;height: 30px;"><label
+                            style="margin-left: 30px;">Pincode:</label></td>
+                    <td style="width: 300px; height: 30px;">
+                        <label id="label_CompanyAddressPincode"></label>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="width: 300px;text-align: left;height: 30px;"><label>Plans & terms:</label></td>
+                    <td style="width: 300px; height: 30px;">
+                        <label id="label_PlansAndTerms"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 300px;text-align: left;height: 30px;"><label style="margin-left: 30px;">Total
+                            Bhema:</label></td>
+                    <td>
+                        <label id="label_TotalBhema"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 300px;text-align: left;height: 30px;"><label
+                            style="margin-left: 30px;">Mode:</label></td>
+                    <td style="width: 300px; height: 30px;">
+                        <label id="label_Mode"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 300px;text-align: left;height: 30px;"><label
+                            style="margin-left: 30px;">Premium:</label></td>
+                    <td>
+                        <label id="label_Premium"></label>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="width: 300px;text-align: left;height: 30px;"><label
+                            style="margin-left: 30px;">policyTaken:</label></td>
+                    <td>
+                        <label id="label_policyTaken"></label>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="width: 300px;text-align: left;height: 30px;"><label
+                            style="margin-left: 30px;">policyExpiry:</label></td>
+                    <td>
+                        <label id="label_policyExpiry"></label>
+                    </td>
+
+                </tr>
+            </table>
+            <br />
+            <div style="text-align: center;">
+                <button type="button" class="btn btn-primary" id="CancelViewCustomers"
+                    style="background-color: #17a2b8;border-color: rgb(0 0 0 / 0%);width: 200px;">Cancel</button>
+            </div>
+        </div>
+
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
+<script type="text/javascript">
+    var model = document.getElementById("myModal");
+
+    /*executes when Dashboard clicks in navbar*/
+    $('#DahboadNav').click(function () {
+        /*removing all styles for "CustomersNav" and 'Customers'*/
+        $("#CustomersNav").removeClass("active");
+        $("#CustomersNav").css('color', 'black');
+        $("#Customers").css('display', 'none');
+        /*adding required styles for "DahboadNav" and 'Dashboad'*/
+        $("#DahboadNav").addClass('active');
+        $("#DahboadNav").css('color', 'white');
+        $("#Dashboad").css('display', 'block');
+        dashboard();
+    });
+
+    /*executes when Customers clicks in navbar*/
+    $("#CustomersNav").click(function () {
+        /*removing all styles for "DahboadNav" and 'Dashboad'*/
+        $("#DahboadNav").removeClass("active");
+        $("#DahboadNav").css('color', 'black');
+        $("#Dashboad").css('display', 'none');
+
+        /*adding required styles for "CustomersNav" and 'Customers'*/
+        $("#CustomersNav").addClass('active');
+        $("#CustomersNav").css('color', 'white');
+        $("#Customers").css('display', 'block');
+        CustomersList();
+
+
+    });
+
+    function dashboard() {
+        $.ajax({
+            url: "/dashboard",
+            method: "get",
+            dataType: "json",
+            success: function (data) {
+                console.log("sort:", data);
+                $("#user").empty();
+                $.each(data, function (index, value) {
+                    index++;
+                    console.log("value:", value);
+                    var i = value.policyInformation.policyExpiry;
+                    var z = i.split("T");
+                    var k = z[0].split("-");
+                    var expirayDate = `${k[2]}-${k[1]}-${k[0]}`;
+                    if (index % 2 == 1) {
+                    $("#user").append(`
+                    <div id="d${index}">
+                <div id="dd${index}" class="div">`);           
+                        $("#dd"+index).append(`<div class="content">
+                        <img src="/images/041 Happy Acid.png" class="image">
+                        <table class="tables">
+                            <tr class="trs">
+                                <td>Name:</td>
+                                <td><label>${value.Fullname}</label></td>
+                            </tr>
+                            <tr class="trs">
+                                <td>Policy No:</td>
+                                <td><label>1234</label></td>
+                            </tr>
+                            <tr class="trs">
+                                <td>Policy Expiry:</td>
+                                <td><label>${expirayDate}</label></td>
+                            </tr>
+                        </table>
+                    </div>`);
+                    $("#dd"+index).append(`</div >`)
+                    $("#d"+index).append(`</div >`)
+                    }
+                    if (index % 2 == 0) {
+                        var val = index-1
+                        $("#dd"+val).append(` <div class="contents">
+                        <img src="/images/041 Happy Acid.png" class="image">
+                        <table class="tables">
+                            <tr class="trs">
+                                <td>Name:</td>
+                                <td><label>${value.Fullname}</label></td>
+                            </tr>
+                            <tr class="trs">
+                                <td>Policy No:</td>
+                                <td><label>1234</label></td>
+                            </tr>
+                            <tr class="trs">
+                                <td>Policy Expiry:</td>
+                                <td><label>${expirayDate}</label></td>
+                            </tr>
+                        </table>
+                    </div>`)
+                    $("#dd"+val).append(`</div >`)
+                    $("#d"+val).append(`</div >`)
+                    }
+                    
+                    
+                })
+            },
+            error: function () {
+
+            }
+        })
+    }
+
+    /*get customers*/
+    function CustomersList() {
+        $.ajax({
+            url: "/Customers",
+            method: "GET",
+            dataType: "JSON",
+            success: function (data) {
+                console.log(data);
+                AppendCustomersListToTable(data);
+            },
+            error: function (error) {
+                console.log("Cerror", error);
+            }
+        })
+    }
+    /*AppendCustomersListToTable*/
+    function AppendCustomersListToTable(data) {
+        $('#customerData').empty();
+        $.each(data, function (index, value) {
+            console.log("value:", value.Fullname);
+            $('#customerData').append('<tr>');
+            $('#customerData').append('<td>' + value.Fullname + '</td>');
+            $('#customerData').append('<td>' + value.PresentAge + '</td>');
+            $('#customerData').append('<td>' + value.YearlyIncome + '</td>');
+            $('#customerData').append('<td>' + value.PresentAddressDetails.Phone + '</td>');
+            $('#customerData').append('<td style="width: 109px;"><table class="table-borderless" style="background-color: #7ce2ff;"><tr><td><span id="EditCustomerButton" customerid=' + value._id + ' class="glyphicon glyphicon-pencil" style="cursor: pointer;" title="Edit"></span></td><td><span id="ViewCustomerButton" customerid=' + value._id + ' class="glyphicon glyphicon-eye-open" style="cursor: pointer;" title="View"></span></td><td><span id="DeleteCustomerButton" customerid=' + value._id + ' class="glyphicon glyphicon-trash" style="cursor: pointer;" title="Delete"></span></td></tr></table></td>');
+            $('#customerData').append('</tr>')
+        })
+    }
+    // function edit(){
+    //     alert("oh");
+    // }
+
+
+    //Edit button to update customer
+    $(document).on("click", '#EditCustomerButton', function () {
+        var id = $(this).attr("customerid");
+        alert(id);
+        $.ajax({
+            url: "/EditCustomer",
+            method: "GET",
+            dataType: "json",
+            data: { id: id },
+            success: function (data) {
+                console.log("Edit:", data);
+                AttachCustomerDataToForm(data);
+            },
+            error: function () {
+
+            }
+        })
+    });
+
+    //view customer
+    $(document).on("click", '#ViewCustomerButton', function () {
+        var id = $(this).attr("customerid");
+        alert("in");
+        $.ajax({
+            url: "/ViewCustomer",
+            method: "get",
+            dataType: "json",
+            data: { id: id },
+            success: function (data) {
+                console.log("view:", data);
+                viewCustomerData(data);
+            },
+            error: function (error) {
+                console.log("viewError:", error)
+            }
+        })
+    });
+
+    //delete customer
+    $(document).on('click', '#DeleteCustomerButton', function () {
+        var id = $(this).attr("customerid");
+        $.ajax({
+            url: "/deletecustomer",
+            method: "delete",
+            dataType: "json",
+            data: { id: id },
+            success: function (data) {
+                //console.log("delete,",data)
+                alert(data.message);
+                CustomersList();
+            },
+            error: function (data) {
+                alert(data.message)
+            }
+        })
+        alert(id);
+    })
+
+    function AttachCustomerDataToForm(data) {
+        $('#CustomerId').text(data._id);
+        $('#FullName').val(data.Fullname);
+        $('#PresentAddress').val(data.PresentAddressDetails.Address);
+        $('#PresentAddressPincode').val(data.PresentAddressDetails.Pincode);
+        $('#PresentAddressPhone').val(data.PresentAddressDetails.Phone);
+        $('#PermanentAddress').val(data.PermantAddress);
+        $('#DOB').val(data.Dob.split("T")[0]);
+        $('#PresentAge').val(data.PresentAge);
+        $('#EducationQualification').val(data.EducationQualification);
+        $('#Occupation').val(data.Occupation);
+        $('#YearlyIncome').val(data.YearlyIncome);
+        $('#FatherName').val(data.FathersName);
+        $('#PlaceOfBirth').val(data.PlaceOfBirth);
+        $('#HusbandName').val(data.HusbandDeatils.Name);
+        $('#HusbandAge').val(data.HusbandDeatils.Age);
+        $('#NomineeName').val(data.NomineeDeatils.Name);
+        $('#NomineeAge').val(data.NomineeDeatils.Age);
+        $('#NomineeRelation').val(data.NomineeDeatils.Relation);
+        $('#EmployeeService').val(data.EmployementDetails.EmployeeService);
+        $('#CompanyAddress').val(data.EmployementDetails.CompanyAddress);
+        $('#CompanyAddressPincode').val(data.EmployementDetails.Pincode);
+        $('#PlansAndTerms').val(data.PlansAndTermsDetails.PlansAndTerms);
+        $('#TotalBhema').val(data.PlansAndTermsDetails.TotalBhema);
+        $('#Mode option:selected').text(data.PlansAndTermsDetails.Mode);
+        $('#Premium').val(data.PlansAndTermsDetails.Premium);
+        $('#policyTaken').val(data.policyInformation.policyTaken.split("T")[0]);
+        $('#policyExpiry').val(data.policyInformation.policyExpiry.split("T")[0]);
+        /*open Form popup*/
+        $('#myModal').css('display', 'block');
+    }
+
+    function viewCustomerData(data) {
+        $('#label_CustomerId').text(data._id);
+        $('#label_FullName').text(data.Fullname);
+        $('#label_PresentAddress').text(data.PresentAddressDetails.Address);
+        $('#label_PresentAddressPincode').text(data.PresentAddressDetails.Pincode);
+        $('#label_PresentAddressPhone').text(data.PresentAddressDetails.Phone);
+        $('#label_PermanentAddress').text(data.PermantAddress);
+        $('#label_DOB').text(data.Dob.split("T")[0]);
+        $('#label_PresentAge').text(data.PresentAge);
+        $('#label_EducationQualification').text(data.EducationQualification);
+        $('#label_Occupation').text(data.Occupation);
+        $('#label_YearlyIncome').text(data.YearlyIncome);
+        $('#label_FatherName').text(data.FathersName);
+        $('#label_PlaceOfBirth').text(data.PlaceOfBirth);
+        $('#label_HusbandName').text(data.HusbandDeatils.Name);
+        $('#label_HusbandAge').text(data.HusbandDeatils.Age);
+        $('#label_NomineeName').text(data.NomineeDeatils.Name);
+        $('#label_NomineeAge').text(data.NomineeDeatils.Age);
+        $('#label_NomineeRelation').text(data.NomineeDeatils.Relation);
+        $('#label_EmployeeService').text(data.EmployementDetails.EmployeeService);
+        $('#label_CompanyAddress').text(data.EmployementDetails.CompanyAddress);
+        $('#label_CompanyAddressPincode').text(data.EmployementDetails.Pincode);
+        $('#label_PlansAndTerms').text(data.PlansAndTermsDetails.PlansAndTerms);
+        $('#label_TotalBhema').text(data.PlansAndTermsDetails.TotalBhema);
+        $('#label_Mode').text(data.PlansAndTermsDetails.Mode);
+        $('#label_Premium').text(data.PlansAndTermsDetails.Premium);
+        $('#label_policyTaken').text(data.policyInformation.policyTaken.split("T")[0]);
+        $('#label_policyExpiry').text(data.policyInformation.policyExpiry.split("T")[0]);
+
+        $('#ViewmyModal').css('display', 'block');
+    }
+    /* To open AddCustomers popup*/
+    $('#AddCustomerButton').click(function () {
+        $('#CustomerId').text(null)
+        $('#FullName').val(null);
+        $('#PresentAddress').val(null);
+        $('#PresentAddressPincode').val(null);
+        $('#PresentAddressPhone').val(null);
+        $('#PermanentAddress').val(null);
+        $('#DOB').val(null);
+        $('#PresentAge').val(null);
+        $('#EducationQualification').val(null);
+        $('#Occupation').val(null);
+        $('#YearlyIncome').val(null);
+        $('#FatherName').val(null);
+        $('#PlaceOfBirth').val(null);
+        $('#HusbandName').val(null);
+        $('#HusbandAge').val(null);
+        $('#NomineeName').val(null);
+        $('#NomineeAge').val(null);
+        $('#NomineeRelation').val(null);
+        $('#EmployeeService').val(null);
+        $('#CompanyAddress').val(null);
+        $('#CompanyAddressPincode').val(null);
+        $('#PlansAndTerms').val(null);
+        $('#TotalBhema').val(null);
+        $('#Mode option:selected').text("Select");
+        $('#Premium').val(null);
+        $('#policyTaken').val(null);
+        $('#policyExpiry').val(null);
+        $('#myModal').css('display', 'block');
+    });
+    window.onclick = function (event) {
+        if (event.target == model) {
+            $('#myModal').css('display', 'none');
+        }
+    }
+
+    /*to close Viewcustomers popup*/
+    $('#CancelViewCustomers').click(function () {
+
+        $('#label_CustomerId').text(null)
+        $('#label_FullName').text(null);
+        $('#label_PresentAddress').text(null);
+        $('#label_PresentAddressPincode').text(null);
+        $('#label_PresentAddressPhone').text(null);
+        $('#label_PermanentAddress').text(null);
+        $('#label_DOB').text(null);
+        $('#label_PresentAge').text(null);
+        $('#EducationQualification').text(null);
+        $('#label_Occupation').text(null);
+        $('#label_YearlyIncome').text(null);
+        $('#label_FatherName').text(null);
+        $('#label_PlaceOfBirth').text(null);
+        $('#label_HusbandName').text(null);
+        $('#label_HusbandAge').text(null);
+        $('#label_NomineeName').text(null);
+        $('#label_NomineeAge').text(null);
+        $('#label_NomineeRelation').text(null);
+        $('#label_EmployeeService').text(null);
+        $('#label_CompanyAddress').text(null);
+        $('#label_CompanyAddressPincode').text(null);
+        $('#label_PlansAndTerms').text(null);
+        $('#label_TotalBhema').text(null);
+        $('#label_Mode').text("Select");
+        $('#label_Premium').text(null);
+        $('#label_policyTaken').text(null);
+        $('#label_policyExpiry').text(null);
+        $('#ViewmyModal').css('display', 'none');
+    })
+
+    /*to close Addcustomers popup*/
+    $('#CancelAddCustomers').click(function () {
+        $('#CustomerId').text(null)
+        $('#FullName').val(null);
+        $('#PresentAddress').val(null);
+        $('#PresentAddressPincode').val(null);
+        $('#PresentAddressPhone').val(null);
+        $('#PermanentAddress').val(null);
+        $('#DOB').val(null);
+        $('#PresentAge').val(null);
+        $('#EducationQualification').val(null);
+        $('#Occupation').val(null);
+        $('#YearlyIncome').val(null);
+        $('#FatherName').val(null);
+        $('#PlaceOfBirth').val(null);
+        $('#HusbandName').val(null);
+        $('#HusbandAge').val(null);
+        $('#NomineeName').val(null);
+        $('#NomineeAge').val(null);
+        $('#NomineeRelation').val(null);
+        $('#EmployeeService').val(null);
+        $('#CompanyAddress').val(null);
+        $('#CompanyAddressPincode').val(null);
+        $('#PlansAndTerms').val(null);
+        $('#TotalBhema').val(null);
+        $('#Mode option:selected').text("Select");
+        $('#Premium').val(null);
+        $('#myModal').css('display', 'none');
+    })
+
+
+    /*Validating AddCustomers and Insering New customers and Updating Existing Customers*/
+    $('#SubmitAddCustomers').click(function () {
+        /*regular expressions*/
+        var mobileRegex = "^[6789][0-9]{9}$";
+        var pincodeRegex = "^[1-9]{1}[0-9]{2}[0-9]{3}$";
+        var ageRegex = "^(0?[1-9]|[1-9][0-9])$";
+
+        /*geeting DATA SHEET values*/
+        var Customerid = $('#CustomerId').text();
+        var FullName = $('#FullName').val();
+        var PresentAddress = $('#PresentAddress').val();
+        var PresentAddressPincode = $('#PresentAddressPincode').val();
+        var PresentAddressPhone = $('#PresentAddressPhone').val();
+        var PermanentAddress = $('#PermanentAddress').val();
+        var Dob = $('#DOB').val();
+        var PresentAge = $('#PresentAge').val();
+        var EducationQualification = $('#EducationQualification').val();
+        var Occupation = $('#Occupation').val();
+        var YearlyIncome = $('#YearlyIncome').val();
+        var FatherName = $('#FatherName').val();
+        var PlaceOfBirth = $('#PlaceOfBirth').val();
+        var HusbandName = $('#HusbandName').val();
+        var HusbandAge = $('#HusbandAge').val();
+        var NomineeName = $('#NomineeName').val();
+        var NomineeAge = $('#NomineeAge').val();
+        var NomineeRelation = $('#NomineeRelation').val();
+        var EmployeeService = $('#EmployeeService').val();
+        var CompanyAddress = $('#CompanyAddress').val();
+        var CompanyAddressPincode = $('#CompanyAddressPincode').val();
+        var PlansAndTerms = $('#PlansAndTerms').val();
+        var TotalBhema = $('#TotalBhema').val();
+        var Mode = $('#Mode option:selected').val();
+        var Premium = $('#Premium').val();
+        var policyTaken = $('#policyTaken').val();
+        var policyExpiry = $('#policyExpiry').val();
+
+        // validations for AddCustomers
+        if (!FullName || !PresentAddress || !PresentAddressPincode || !PresentAddressPhone || !PermanentAddress || !DOB || !PresentAge ||
+            !EducationQualification || !Occupation || !YearlyIncome || !FatherName || !PlaceOfBirth || !HusbandName || !HusbandAge || !NomineeName ||
+            !NomineeAge || !NomineeRelation || !EmployeeService || !CompanyAddress || !CompanyAddressPincode || !PlansAndTerms || !TotalBhema ||
+            !Mode || !Premium || !policyTaken || !policyExpiry) {
+            alert("All Are Manditory fileds");
+            return;
+        }
+        if (!PresentAddressPincode.match(pincodeRegex)) {
+            alert("Enter Valid Pincode");
+            return;
+        }
+
+        if (!PresentAddressPhone.match(mobileRegex)) {
+            alert("Enter Valid Mobile Number");
+            return;
+        }
+        if (!PresentAge.match(ageRegex)) {
+            alert("Enter Valid Age");
+            return;
+        }
+        if (!HusbandAge.match(ageRegex)) {
+            alert("Enter Valid Age");
+            return;
+        }
+        if (!NomineeAge.match(ageRegex)) {
+            alert("Enter Valid Age");
+            return;
+        }
+        if (!CompanyAddressPincode.match(pincodeRegex)) {
+            alert("Enter Valid Pincode");
+            return;
+        }
+        var AddCustomerDetails = {
+            Customerid: Customerid,
+            FullName: FullName,
+            PresentAddress: PresentAddress,
+            PresentAddressPincode: PresentAddressPincode,
+            PresentAddressPhone: PresentAddressPhone,
+            PermanentAddress: PermanentAddress,
+            Dob: Dob,
+            PresentAge: PresentAge,
+            EducationQualification: EducationQualification,
+            Occupation: Occupation,
+            YearlyIncome: YearlyIncome,
+            FatherName: FatherName,
+            PlaceOfBirth: PlaceOfBirth,
+            HusbandName: HusbandName,
+            HusbandAge: HusbandAge,
+            NomineeName: NomineeName,
+            NomineeAge: NomineeAge,
+            NomineeRelation: NomineeRelation,
+            EmployeeService: EmployeeService,
+            CompanyAddress: CompanyAddress,
+            CompanyAddressPincode: CompanyAddressPincode,
+            PlansAndTerms: PlansAndTerms,
+            TotalBhema: TotalBhema,
+            Mode: Mode,
+            Premium: Premium,
+            policyTaken: policyTaken,
+            policyExpiry: policyExpiry
+        };
+        var token = $.cookie("token");
+        console.log("lan:", token);
+        if (AddCustomerDetails.Customerid) {
+            $.ajax({
+                url: "/UpdateCustomer",
+                method: "POST",
+                dataType: "JSON",
+                //headers: { "token": token },
+                data: AddCustomerDetails,
+                success: function (data) {
+                    $('#myModal').css('display', 'none');
+                    CustomersList();
+                },
+                error: function (error) {
+
+                }
+            })
+        }
+        else {
+            $.ajax({
+                url: "/AddCustomer",
+                method: "POST",
+                dataType: "JSON",
+                //headers: { "token": token },
+                data: AddCustomerDetails,
+                success: function (data) {
+                    console.log("data:", data);
+                    alert(data.message);
+                    $('#myModal').css('display', 'none');
+                    CustomersList();
+                },
+                error: function (error) {
+                    alert("error", error);
+                    console.log("error", error);
+                }
+            })
+        }
+
+    })
+
+    $(document).on('click', '#search', function () {
+        if (!$('#Fromdate').val() || !$('#Todate').val()) {
+            alert(" From and to dates are manidatory");
+            alert($('#Todate').val());
+            return;
+        }
+        $.ajax({
+            url: "/filterCustomer",
+            method: "get",
+            dataType: "json",
+            data: { from: $('#Fromdate').val(), to: $('#Todate').val() },
+            success: function (data) {
+                AppendCustomersListToTable(data);
+
+            },
+            error: function (data) {
+                console.log("filterError:", data)
+            }
+
+        })
+    })
+</script>
+
+</html>
